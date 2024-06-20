@@ -33,4 +33,23 @@ RSpec.describe 'Questionnaire' do
   end
 
 
+  describe '#calculate_rating' do
+    it 'calculates the correct rating' do
+      answers = { "q1" => true, "q2" => false, "q3" => true, "q4" => false, "q5" => true }
+      expect(calculate_rating(answers)).to eq(60.0)
+    end
+  end
+
+  describe '#calculate_average_rating' do
+    it 'calculates the correct average rating' do
+      store.transaction do
+        store[:all_runs] << { "q1" => true, "q2" => false, "q3" => true, "q4" => false, "q5" => true } # 60%
+        store[:all_runs] << { "q1" => false, "q2" => true, "q3" => false, "q4" => true, "q5" => false } # 40%
+      end
+      store.transaction(true) do
+        all_runs = store[:all_runs]
+        expect(calculate_average_rating(all_runs)).to eq(50.0)
+      end
+    end
+  end
 end
