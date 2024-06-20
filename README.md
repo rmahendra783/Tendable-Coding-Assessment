@@ -35,3 +35,58 @@ Code Comments
 
 Dockerfile / Bash script if needed for us to run the exercise
 
+
+..............................................................
+Updated readme with an explanation of my approach
+
+
+This Ruby program implements a survey where users can answer a series of Yes/No questions. The program calculates a rating based on the user's answers after each run and also provides an average rating for all runs. The answers are persisted using PStore to ensure they can be used in calculations for subsequent runs.
+
+Usage
+To run the questionnaire, use the following command:
+bundle exec ruby questionnaire.rb
+
+
+Requirements
+The program meets the following requirements:
+
+User Inputs:
+The program prompts the user to answer a series of Yes/No questions.
+Acceptable answers are "Yes", "No", "Y", or "N" (case insensitive).
+
+Persistence:
+Answers are persisted across runs using PStore.
+
+Rating Calculation:
+After each run, a rating is calculated as 100 * number of yes answers / number of questions.
+An average rating for all runs is also calculated and displayed.
+
+
+Example Output: You can check your Output on replit.com for easy way.
+
+
+Questions-
+The questions included in the survey are:
+
+Can you code in Ruby?
+Can you code in JavaScript?
+Can you code in Swift?
+Can you code in Java?
+Can you code in C#?
+
+
+Can you code in Ruby? (Yes/No): Yes
+Can you code in JavaScript? (Yes/No): No
+Can you code in Swift? (Yes/No): Y
+Can you code in Java? (Yes/No): N
+Can you code in C#? (Yes/No): Yes
+
+Survey Report:
+Can you code in Ruby? - Answer: Yes
+Can you code in JavaScript? - Answer: No
+Can you code in Swift? - Answer: Yes
+Can you code in Java? - Answer: No
+Can you code in C#? - Answer: Yes
+
+Rating for this run: 60.0%
+Average rating for all runs: 60.0%
